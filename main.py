@@ -2,6 +2,7 @@ from scraping_THT import extract_article_links, extract_article_text
 from processor import process_article_for_paragraph
 from extractor import extract_sub_rel_obj
 from graphCreator import digraph_creator
+from qaSession import qa_session
 
 ############################################################################
 """
@@ -23,7 +24,7 @@ else:
 """
 Process article for sentences
 """
-paragraph = process_article_for_paragraph(Article, article_num=2)
+paragraph = process_article_for_paragraph(Article, article_num=0)
 # print(paragraph)
 
 ############################################################################
@@ -37,4 +38,8 @@ df = extract_sub_rel_obj(paragraph)
 """
 Create Directional graph
 """
-digraph_creator(df)
+graph = digraph_creator(df)
+# print(graph.edges.data())
+
+############################################################################
+qa_session(graph)

@@ -6,6 +6,7 @@ def digraph_creator(df):
     """
     Creates directional graph and saves in folder
     :param df: Pandas dataframe containing id, text, subject, object and relation
+    :return graph: Networkx Digraph
     """
     # Creating Digraph
     graph = nx.from_pandas_edgelist(df, source="subject", target="object_",
@@ -24,3 +25,5 @@ def digraph_creator(df):
     # plt.show()
     # Saving
     plt.savefig('graph_db.png', bbox_inches='tight')
+
+    return graph
